@@ -4,7 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import './App.css';
 
-// 1. Define Zod validation schema
 const loginSchema = z.object({
   email: z
     .string()
@@ -25,7 +24,6 @@ function App() {
   const [healthMessage, setHealthMessage] = useState('Checking backend status...');
   const [checkTrigger, setCheckTrigger] = useState(0);
 
-  // 2. Setup react-hook-form with Zod resolver
   const {
     register,
     handleSubmit,
@@ -39,7 +37,7 @@ function App() {
     },
   });
 
-  // 3. Static login handler
+  //  handler
   const onSubmit = (data) => {
     setIsSubmittingForm(true);
     // Simulate API delay
@@ -51,13 +49,12 @@ function App() {
     }, 1200);
   };
 
-  // 4. Logout handler
+  //  Logout handler
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserEmail('');
   };
 
-  // 5. Backend Health Check Fetcher
   useEffect(() => {
     if (!isLoggedIn) return;
 
